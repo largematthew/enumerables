@@ -7,15 +7,14 @@ module Enumerable
             i += 1
        end
    end
-    
-    def my_select
-        output = Array.new
-        self.my_each do |x|
-            if yield(x)
-                output.push(x)
-            end
-        return output
-        end
-    end
 
+    def my_all
+        output = true
+        self.my_each do |x|
+            if yield(x)==false
+                output = false
+            end
+        end
+        return output
+    end
 end
